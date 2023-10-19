@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <p align="center">
 
 <img src="https://github.com/homebridge/branding/raw/master/logos/homebridge-wordmark-logo-vertical.png" width="150">
@@ -192,3 +193,6 @@ Note these links are here for help but are not supported/verified by the Homebri
 #   s w i t c h  
  #   s w i t c h  
  
+=======
+# switch
+>>>>>>> 571010d07b9e09d7b41010b45e3ad4e1b5b7de94
