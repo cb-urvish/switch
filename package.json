@@ -13,7 +13,7 @@
     "url": "https://github.com/cb-urvish/switch/issues"
   },
   "engines": {
-    "node": "^12.0.0",
+    "node": "18.16.0",
     "homebridge": "^1.6.0"
   },
   "main": "dist/index.js",
