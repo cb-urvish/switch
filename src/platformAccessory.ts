@@ -44,24 +44,19 @@ export class SwitchPlatformAccessory {
 
     const client = new net.Socket();
     client.connect(8989, '192.168.1.79', ()=> {
-      //console.log('Connected');
       client.write('Hello, server! Love, Client.');
     });
 
     client.on('data', (data) => {
       const receivedData = data.toString().trim();
-      //console.log('Received: ' + receivedData);
       this.handleReceivedData(receivedData);
     });
   }
 
   private handleReceivedData(receivedData: string) {
-   console.log('set............');
     if (receivedData === 'on') {
-      console.log('set value to ON');
       this.setOn(true);
     } else if (receivedData === 'off') {
-      //console.log('set value to OFF');
       this.setOn(false);
     }
   }
