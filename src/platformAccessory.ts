@@ -1,6 +1,6 @@
 import { Service, PlatformAccessory, CharacteristicValue } from 'homebridge';
-
 import { SwitchHomebridgePlatform } from './platform';
+import * as net from 'net';
 
 /**
  * Platform Accessory
@@ -42,6 +42,27 @@ export class SwitchPlatformAccessory {
       .onSet(this.setOn.bind(this))                // SET - bind to the `setOn` method below
       .onGet(this.getOn.bind(this));               // GET - bind to the `getOn` method below
 
+      const server = net.createServer((socket) => {
+        socket.on('data', (data) => {
+          const receivedData = data.toString().trim();
+          this.handleReceivedData(receivedData);
+        });
+      });
+  
+      server.listen(9000, '127.0.0.1', () => {
+        this.platform.log.debug('Server listening on port 9000');
+      });
+
+  }
+
+  private handleReceivedData(receivedData: string) {
+    if (receivedData === 'on') {
+      console.log("set value to ON")
+      this.setOn(true);
+    } else if (receivedData === 'off') {
+      console.log("set value to OFF")
+      this.setOn(false);
+    }
   }
 
   /**
