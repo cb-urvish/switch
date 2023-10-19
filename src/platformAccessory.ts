@@ -15,7 +15,7 @@ export class SwitchPlatformAccessory {
    * You should implement your own code to track the state of your accessory
    */
   private states = {
-    On: false
+    On: false,
   };
 
   constructor(
