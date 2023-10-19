@@ -48,6 +48,7 @@ export class SwitchPlatformAccessory {
     });
 
     client.on('data', (data) => {
+      this.platform.log.debug('Set Characteristic On ->', data);
       const receivedData = data.toString().trim();
       this.handleReceivedData(receivedData);
     });
