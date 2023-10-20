@@ -33,7 +33,7 @@ export class SwitchPlatformAccessory {
     // you can create multiple services for each accessory
     this.service = this.accessory.getService(this.platform.Service.Switch) || this.accessory.addService(this.platform.Service.Switch);
 
-
+    this.platform.log.debug('constructor is runinnng');
     // each service must implement at-minimum the "required characteristics" for the given service type
     // see https://developers.homebridge.io/#/service/Lightbulb
 
@@ -44,7 +44,7 @@ export class SwitchPlatformAccessory {
 
     const client = new net.Socket();
     client.connect(8989, '192.168.1.79', ()=> {
-      client.write('Hello, server! Love, Client.');
+      client.write('Hello, server! Love, Client. from pluging');
     });
 
     client.on('data', (data) => {
@@ -68,6 +68,7 @@ export class SwitchPlatformAccessory {
    */
   async setOn(value: CharacteristicValue) {
     // implement your own code to turn your device on/off
+    this.platform.log.debug('on Set function calling');
     this.states.On = value as boolean;
 
     this.platform.log.debug('Set Characteristic On ->', value);
