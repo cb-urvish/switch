@@ -47,12 +47,14 @@ export class SwitchPlatformAccessory {
     const client = new net.Socket();
     client.connect(8989, '192.168.1.79', ()=> {
       client.write('Hello, server! Love, Client. from pluging');
+      client.destroy();
     });
 
     client.on('data', (data) => {
       this.platform.log.debug('Set Characteristic On ->', data);
       const receivedData = data.toString().trim();
       this.handleReceivedData(receivedData);
+      client.destroy();
     });
   }
 
