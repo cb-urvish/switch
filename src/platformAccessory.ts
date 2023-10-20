@@ -33,6 +33,8 @@ export class SwitchPlatformAccessory {
     // you can create multiple services for each accessory
     this.service = this.accessory.getService(this.platform.Service.Switch) || this.accessory.addService(this.platform.Service.Switch);
 
+    this.service.setCharacteristic(this.platform.Characteristic.Name, accessory.context.device.exampleDisplayName);
+
     this.platform.log.debug('constructor is runinnng');
     // each service must implement at-minimum the "required characteristics" for the given service type
     // see https://developers.homebridge.io/#/service/Lightbulb
